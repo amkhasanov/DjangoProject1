@@ -2,6 +2,8 @@ from django.contrib import admin
 from django.urls import path
 import core.views
 
+from django.shortcuts import render
+
 urlpatterns = [
-    path('hello', core.views.hello),
+    path('', core.views.hello),
 ]
