@@ -55,25 +55,44 @@
 </nav>
 
 <table class="table">
-  <thead>
+    <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Pages</th>
-      <th scope="col">Author</th>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Pages</th>
+        <th scope="col">Author</th>
+        <th scope="col">Publisher</th>
     </tr>
-  </thead>
-  <tbody>
+    </thead>
+    <tbody>
     {% for book in books %}
     <tr>
-      <th scope="row">{{book.id}}</th>
-      <td>{{book.name}}</td>
-      <td>{{book.pages}}</td>
-      <td>{{book.author}}</td>
+        <th scope="row">{{book.id}}</th>
+        <td>{{book.name}}</td>
+        <td>{{book.pages}}</td>
+        <td>{{book.author}}</td>
+        <td>{{book.publisher.name}}</td>
     </tr>
     {%endfor%}
-  </tbody>
+    </tbody>
 </table>
+
+{% for author in authors %}
+<p>{{author.name}}(Количество его книг {{author.books.count}})
+    {% for book in author.books.all %}
+        <span>#{{book.name}}(Заказов:{{book.order_set.count}}), {{book.publisher.name}}</span><br/>
+    {%endfor%}
+</p>
+{%endfor%}
+
+<hr/>
+{% for publisher in publishers %}
+<p>{{publisher.name}}(Количество изданных книг {{publisher.books.count}})
+    {% for book in publisher.books.all %}
+        <span>#{{book.name}}</span><br/>
+    {%endfor%}
+</p>
+{%endfor%}
 
 </body>
 </html>

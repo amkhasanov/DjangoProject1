@@ -1,7 +1,9 @@
-from django.http import HttpResponse
 from django.shortcuts import render
-from django.template import Template, Context
-from .models import Book
+
+from .models import Book, Author, Publisher
+
 
 def hello(request):
-    return render(request, 'core/hello.html', {'books' : Book.objects.all()})
+    print(Author.objects.all())
+    context = {'books': Book.objects.all(), 'authors': Author.objects.all(), 'publishers': Publisher.objects.all()}
+    return render(request, 'core/hello.html', context)
