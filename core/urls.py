@@ -5,8 +5,8 @@ import core.views
 from django.shortcuts import render
 
 urlpatterns = [
-    path('', core.views.index),
-    path('books', core.views.books),
-    path('books/<int:id>', core.views.books_detail),
+    path('', core.views.IndexView.as_view()),
+    path('books', core.views.BooksView.as_view()),
+    path('books/<int:pk>', core.views.BookDetail.as_view()),
 
 ]
