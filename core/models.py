@@ -22,8 +22,8 @@ class Author(models.Model):
 class Publisher(models.Model):
     name = models.CharField('Название издательства', max_length=100)
 
-    '''def __str__(self):
-        return self.name'''
+    def __str__(self):
+        return self.name
 
 
 class Order(models.Model):
