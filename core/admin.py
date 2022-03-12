@@ -1,4 +1,4 @@
 from django.contrib import admin
-import core.models
+from core import models
 # Register your models here.
-admin.site.register(core.models.Book)
+admin.site.register(models.Book)
