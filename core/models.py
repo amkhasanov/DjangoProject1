@@ -40,3 +40,5 @@ class Order(models.Model):
 
 class AuthorProfile(models.Model):
     author = models.OneToOneField(Author, on_delete=models.CASCADE, primary_key=True)
+
+

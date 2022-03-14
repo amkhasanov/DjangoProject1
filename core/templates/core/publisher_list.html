@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
 
-    <title>Books</title>
+    <title>Publisher</title>
 </head>
 <body>
 
@@ -32,7 +32,7 @@
                     <a class="nav-link" href="/books">Books</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/publisher">Publisher</a>
+                    <a class="nav-link" href="/publisher">Publishers</a>
                 </li>
             </ul>
             <form class="d-flex">
@@ -43,44 +43,10 @@
     </div>
 </nav>
 
-<table class="table">
-    <thead>
-    <tr>
-        <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">Pages</th>
-        <th scope="col">Author</th>
-        <th scope="col">Publisher</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for book in books %}
-    <tr>
-        <th scope="row">{{book.id}}</th>
-        <td><a href="/books/{{book.id}}">{{book.name}}</a></td>
-        <td>{{book.pages}}</td>
-        <td>{{book.author}}</td>
-        <td>{{book.publisher.name}}</td>
-    </tr>
-    {%endfor%}
-    </tbody>
-</table>
-
-{% for author in authors %}
-<p>{{author.name}}(Количество его книг {{author.books.count}})
-    {% for book in author.books.all %}
-        <span>#{{book.name}}(Заказов:{{book.order_set.count}}), {{book.publisher.name}}</span><br/>
-    {%endfor%}
-</p>
-{%endfor%}
-
-<hr/>
-{% for publisher in publishers %}
-<p>{{publisher.name}}(Количество изданных книг {{publisher.books.count}})
-    {% for book in publisher.books.all %}
-        <span>#{{book.name}}</span><br/>
-    {%endfor%}
-</p>
+{% for publisher in publisher_list %}
+    <ul>
+    <li>Издательство: {{publisher.name}}</li>
+    </ul>
 {%endfor%}
 
 </body>
